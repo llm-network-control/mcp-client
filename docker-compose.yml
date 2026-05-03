@@ -1,0 +1,15 @@
+services:
+  mcp_server:
+    image: danteonline/llm-network-control-mcp-server
+    build:
+      context: .
+    env_file:
+      - .env
+    ports:
+      - "${SERVER_PORT:-9000}:${SERVER_PORT:-9000}"
+    volumes:
+      - sqlite_data:/data
+
+
+volumes:
+  sqlite_data:

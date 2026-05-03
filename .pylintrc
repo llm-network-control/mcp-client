@@ -1,0 +1,10 @@
+[MASTER]
+disable=
+    W0621, # Redefining name from outer scope
+    R0917, # Too many positional arguments
+    R0913, # Too many arguments
+    R0903, # Too few public methods
+    R0801, # Similar lines
+
+
+ignore-paths=./alembic
