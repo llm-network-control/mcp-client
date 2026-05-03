@@ -1,3 +1,6 @@
+"""
+MCP Клиент
+"""
 from fastmcp import Client
 
 

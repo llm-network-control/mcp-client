@@ -1,3 +1,7 @@
+"""
+Примеры для swagger
+"""
+
 examples = {
     "list_routers": {
         "summary": "Список всех роутеров",

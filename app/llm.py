@@ -1,8 +1,14 @@
+"""
+Работа с LLM
+"""
 import json
+
 from fastmcp import Client
 from openai import AsyncOpenAI
-from .client import get_tools
+
 from config import OPENROUTER_API_KEY
+
+from .client import get_tools
 
 # SYSTEM_PROMPT = '''
 # You are a network assistant.
