@@ -1,1 +1,4 @@
-wheel
+fastapi[standard]==0.136.1
+fastmcp==3.2.4
+openai==2.33.0
+python-dotenv==1.2.2
