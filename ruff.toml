@@ -1,4 +1,5 @@
 src = ["."]
+exclude = ["main.py"]
 
 line-length = 88
 

@@ -7,4 +7,4 @@ disable=
     R0801, # Similar lines
 
 
-ignore-paths=./alembic
+ignore-paths=./main.py
