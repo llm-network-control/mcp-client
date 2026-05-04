@@ -2,6 +2,7 @@
 REST API Server
 """
 from fastapi import FastAPI
+from fastapi.responses import JSONResponse
 
 from app.client import get_client
 from app.examples import openapi_extra
@@ -26,3 +27,14 @@ async def chat(request: ChatRequest):
     return ChatResponse(
         response=response_content
     )
+
+
+@app.get("/health")
+async def health_check():
+    """
+    Health Check
+    """
+    return JSONResponse({
+        "status": "healthy",
+        "service": "mcp-client"
+    })

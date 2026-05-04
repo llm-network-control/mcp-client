@@ -45,3 +45,16 @@ def test_chat_with_tools(client: TestClient, mocker):
         'response': MockMessageWithTools().content
     }
     assert response.json() == expected_response
+
+
+def test_health_check(client):
+    """
+    Test /health: positive
+    """
+    response = client.get('/health')
+    assert response.status_code == 200
+    expected_response = {
+        "status": "healthy",
+        "service": "mcp-client"
+    }
+    assert expected_response == response.json()

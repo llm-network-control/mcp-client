@@ -1,5 +1,5 @@
 run:
-	python main.py
+	fastapi dev main.py
 
 pylint:
 	pylint $(shell git ls-files '*.py')

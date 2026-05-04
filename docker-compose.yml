@@ -3,10 +3,36 @@ services:
     image: danteonline/llm-network-control-mcp-server
     env_file:
       - .env
-    ports:
-      - "${SERVER_PORT:-9000}:${SERVER_PORT:-9000}"
+    expose:
+      - "${SERVER_PORT:-9000}"
     volumes:
       - sqlite_data:/data
+    healthcheck:
+      test: [ "CMD", "curl", "-f", "http://localhost:${SERVER_PORT:-9000}/health" ]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+      start_period: 5s
+
+  mcp_client:
+    image: danteonline/llm-network-control-mcp-client
+    build:
+      context: .
+    env_file:
+      - .env
+    ports:
+      - "${CLIENT_PORT:-8000}:${CLIENT_PORT:-8000}"
+    depends_on:
+      mcp_server:
+        condition: service_healthy
+    command: >
+      sh -c "fastapi run --host 0.0.0.0 --port ${CLIENT_PORT:-8000}"
+    healthcheck:
+      test: [ "CMD", "curl", "-f", "http://localhost:${CLIENT_PORT:-8000}/health" ]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+      start_period: 10s
 
 
 volumes:
